@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LoginPage</string>
+    <string name="good_morning">Good Morning \n please login</string>
+    <string name="good_night">Good Night \n please login</string>
+    <string name="login">Login</string>
+    <string name="remember_me">Remember Me</string>
+</resources>
