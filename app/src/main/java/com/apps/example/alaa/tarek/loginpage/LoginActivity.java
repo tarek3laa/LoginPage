@@ -1,7 +1,6 @@
 package com.apps.example.alaa.tarek.loginpage;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,25 +10,22 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.sdsmdg.tastytoast.TastyToast;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
+/**
+ *  TODO ( 3 ) in your manifest file change intent filter to open this activity
+ *  TODO ( 4) copy tasty toast dependencies from my gradle file to your gradle file
+ *  TODO (5) copy all colors & drawable files to your project
+ */
 public class LoginActivity extends AppCompatActivity {
 
     EditText metUserName, metPassword;
     LinearLayout layout;
-    TextView textView;
     CheckBox mcbRememberMe;
     Button mbtLogin;
     SharedPreferences sharedPreferences;
+
     private final String FILE_NAME = "com.apps.example.alaa.tarek.loginpage";
     private final String LOGIN_KEY = "login";
 
@@ -41,23 +37,18 @@ public class LoginActivity extends AppCompatActivity {
         metUserName = (EditText) findViewById(R.id.tv_username);
         metPassword = (EditText) findViewById(R.id.tv_password);
         layout = (LinearLayout) findViewById(R.id.layout);
-        textView = (TextView) findViewById(R.id.tv_good);
         mcbRememberMe = (CheckBox) findViewById(R.id.cb_remember_me);
         mbtLogin = (Button) findViewById(R.id.bt_login);
         sharedPreferences = getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
 
-
         /** ************************************   */
 
-        // Check the time whether it is morning or evening
-        if (getCurrentHour() >= 16) {
-            // change background to evening background
-            layout.setBackgroundResource(R.drawable.login4);
-            textView.setText(R.string.good_night);
-        }
 
         if (sharedPreferences.getBoolean(LOGIN_KEY, false)) {
-            TastyToast.makeText(this, "authentication Succeeded", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
+            makeTastyToast("authentication Succeeded", TastyToast.SUCCESS);
+
+            //TODO(1) replace "Activity" with Main Activity class
+            // startActivity(new Intent(this,Activity));
         }
         mbtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +62,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     *  but boolean in sharedPreferences
+     * but boolean in sharedPreferences
+     *
      * @param s Key
      * @param b Value
      */
@@ -91,9 +83,9 @@ public class LoginActivity extends AppCompatActivity {
 
             // check if username and password are correct
             if (username.equals("admin") && password.equals("admin")) {
-
                 makeTastyToast("authentication Succeeded", TastyToast.SUCCESS);
-                // startActivity(new Intent());
+                //TODO(2) replace "Activity" with Main Activity class
+                // startActivity(new Intent(this,Activity));;
             } else
                 makeTastyToast("username or password incorrect", TastyToast.ERROR);
 
@@ -101,22 +93,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param s Messages that appear in the toast
+     * @param s     Messages that appear in the toast
      * @param toast type
      */
     private void makeTastyToast(String s, int toast) {
         TastyToast.makeText(this, s, TastyToast.LENGTH_LONG, toast);
     }
 
-    /**
-     * @return Current Time in 24 hour format
-     */
-    private int getCurrentHour() {
-        Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("HH");
-        int formattedTime = Integer.parseInt(dateFormat.format(date));
-        return formattedTime;
-    }
+
 }

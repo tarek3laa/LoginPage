@@ -8,17 +8,18 @@
     android:background="@drawable/login1"
     android:orientation="vertical"
     >
-    <TextView
-        android:id="@+id/tv_good"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/good_morning"
-        android:gravity="center"
-        android:textColor="#d0f2f0f0"
-        android:textSize="35sp"
-        android:padding="5dp"
-        android:layout_margin="50dp"
-        android:fontFamily="cursive"
+
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="2dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/logo5"
+
         />
 
 
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:hint="username"
         android:textColor="#c2ffffff"
         android:textColorHint="#9effffff"
